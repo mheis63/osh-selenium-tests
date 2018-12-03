@@ -22,7 +22,7 @@ RUN           apt-get -y update \
 
 RUN           pip install --upgrade pip
 RUN           wget --directory-prefix=/tmp/ https://chromedriver.storage.googleapis.com/2.44/chromedriver_linux64.zip
-RUN           unzip /tmp/chromedriver_linux64.zip /etc/selenium
+RUN           unzip /tmp/chromedriver_linux64.zip -d /etc/selenium
 
 COPY          bin/grafanaSelenium.py /usr/local/bin/grafanaSelenium.py
 COPY          bin/nagiosSelenium.py /usr/local/bin/nagiosSelenium.py
