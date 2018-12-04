@@ -20,9 +20,16 @@ RUN           apt-get -y update \
               && apt-get clean \
               && rm -rf /var/lib/apt/lists/*
 
-RUN           pip install --upgrade pip
+RUN           wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+RUN           sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+
 RUN           wget --directory-prefix=/tmp/ https://chromedriver.storage.googleapis.com/2.44/chromedriver_linux64.zip
 RUN           unzip /tmp/chromedriver_linux64.zip -d /etc/selenium
+
+RUN           apt-get -y update \
+              && apt-get -y install google-chrome-stable \
+              && apt-get clean \
+              && rm -rf /var/lib/apt/lists/*
 
 COPY          bin/grafanaSelenium.py /usr/local/bin/grafanaSelenium.py
 COPY          bin/nagiosSelenium.py /usr/local/bin/nagiosSelenium.py
