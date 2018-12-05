@@ -16,7 +16,7 @@ ENV           NAGIOS_URI nagios.osh-infra.svc.cluster.local
 ENV           PROMETHEUS_URI prometheus.osh-infra.svc.cluster.local
 
 RUN           apt-get -y update \
-              && apt-get -y install python-pip unzip wget xvfb \
+              && apt-get -y install python-pip unzip wget xvfb vim \
               && apt-get clean \
               && rm -rf /var/lib/apt/lists/*
 
