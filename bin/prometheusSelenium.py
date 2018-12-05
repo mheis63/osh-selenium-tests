@@ -39,7 +39,11 @@ else:
   logger.critical('Prometheus URI environment variable not set')
   sys.exit(1)
 
-browser = webdriver.Chrome('/tmp/chromedriver')
+options = Options()
+options.add_argument('--headless')
+options.add_argument('--no-sandbox')
+
+browser = webdriver.Chrome('/etc/selenium/chromedriver', chrome_options=options)
 
 browser.get("http://"+PROMETHEUS_USER+":"+PROMETHEUS_PASSWORD+"@"+PROMETHEUS_URI)
 

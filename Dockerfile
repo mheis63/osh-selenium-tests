@@ -16,9 +16,11 @@ ENV           NAGIOS_URI nagios.osh-infra.svc.cluster.local
 ENV           PROMETHEUS_URI prometheus.osh-infra.svc.cluster.local
 
 RUN           apt-get -y update \
-              && apt-get -y install python-pip unzip wget \
+              && apt-get -y install python-pip unzip wget xvfb \
               && apt-get clean \
               && rm -rf /var/lib/apt/lists/*
+
+RUN           pip install selenium
 
 RUN           wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
 RUN           sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'

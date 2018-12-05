@@ -39,7 +39,11 @@ else:
   logger.critical('Nagios URI environment variable not set')
   sys.exit(1)
 
-browser = webdriver.Chrome('/tmp/chromedriver')
+  options = Options()
+  options.add_argument('--headless')
+  options.add_argument('--no-sandbox')
+
+browser = webdriver.Chrome('/etc/selenium/chromedriver', chrome_options=options)
 browser.get('http://'+NAGIOS_USER+':'+NAGIOS_PASSWORD+'@'+NAGIOS_URI)
 
 sideFrame = browser.switch_to.frame('side')
