@@ -36,3 +36,6 @@ RUN           apt-get -y update \
 COPY          bin/grafanaSelenium.py /usr/local/bin/grafanaSelenium.py
 COPY          bin/nagiosSelenium.py /usr/local/bin/nagiosSelenium.py
 COPY          bin/prometheusSelenium.py /usr/local/bin/prometheusSelenium.py
+
+COPY          ./selenium_test.sh
+ENTRYPOINT    ["selenium_test.sh"]
