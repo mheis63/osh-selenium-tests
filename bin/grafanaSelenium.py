@@ -1,6 +1,6 @@
 import logging
 import os
-
+import sys
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -42,9 +42,13 @@ else:
 
 options = Options()
 options.add_argument('--headless')
+
 options.add_argument('--no-sandbox')
 
 browser = webdriver.Chrome('/etc/selenium/chromedriver', chrome_options=options)
+WebDriverWait(browser,15)
+browser.save_screenshot("Test.png")
+
 
 browser.get(grafana_uri)
 username = browser.find_element_by_name('username')

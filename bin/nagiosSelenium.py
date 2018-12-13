@@ -1,10 +1,12 @@
-import pdb
-
+import os
+import logging
+import sys
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.alert import Alert
+from selenium.webdriver.chrome.options import Options
+
 
 # Create logger, console handler and formatter
 logger = logging.getLogger('Nagios Selenium Tests')
@@ -19,7 +21,7 @@ logger.addHandler(ch)
 
 # Get Grafana admin user name
 if "NAGIOS_USER" in os.environ:
-  grafana_user = os.environ['NAGIOS_USER']
+  nagios_user = os.environ['NAGIOS_USER']
   logger.info('Found Nagios username')
 else:
   logger.critical('Nagios username environment variable not set')
@@ -33,18 +35,18 @@ else:
   sys.exit(1)
 
 if "NAGIOS_URI" in os.environ:
-  grafana_uri = os.environ['NAGIOS_URI']
+  nagios_uri = os.environ['NAGIOS_URI']
   logger.info('Found Nagios URI')
 else:
   logger.critical('Nagios URI environment variable not set')
   sys.exit(1)
 
-  options = Options()
-  options.add_argument('--headless')
-  options.add_argument('--no-sandbox')
+options = Options()
+options.add_argument('--headless')
+options.add_argument('--no-sandbox')
 
 browser = webdriver.Chrome('/etc/selenium/chromedriver', chrome_options=options)
-browser.get('http://'+NAGIOS_USER+':'+NAGIOS_PASSWORD+'@'+NAGIOS_URI)
+browser.get('http://'+nagios_user+':'+nagios_password+'@'+nagios_uri)
 
 sideFrame = browser.switch_to.frame('side')
 

@@ -1,19 +1,19 @@
 #!/usr/bin/env bash
 
-GRAFANA_USER="admin"
-NAGIOS_USER="admin"
-PROMETHEUS_USER="admin"
+export GRAFANA_USER="admin"
+export NAGIOS_USER="admin"
+export PROMETHEUS_USER="admin"
 
-GRAFANA_PASSWORD="password"
-NAGIOS_PASSWORD="password"
-PROMETHEUS_PASSWORD="password"
+export GRAFANA_PASSWORD="password"
+export NAGIOS_PASSWORD="password"
+export PROMETHEUS_PASSWORD="password"
 
-GRAFANA_URI="http://grafana.osh-infra.svc.cluster.local"
-NAGIOS_URI="nagios.osh-infra.svc.cluster.local"
-PROMETHEUS_URI="prometheus.osh-infra.svc.cluster.local"
+export GRAFANA_URI="http://grafana.osh-infra.svc.cluster.local"
+export NAGIOS_URI="nagios.osh-infra.svc.cluster.local"
+export PROMETHEUS_URI="prometheus.osh-infra.svc.cluster.local"
 
-apt-get -y update
-apt-get -y install \
+sudo apt-get -y update
+sudo apt-get -y install \
         python-pip \
         unzip \
         wget \
@@ -28,10 +28,10 @@ sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
 wget --directory-prefix=/tmp/ https://chromedriver.storage.googleapis.com/2.44/chromedriver_linux64.zip
 unzip /tmp/chromedriver_linux64.zip -d /etc/selenium
 
-apt-get -y update
-apt-get -y install google-chrome-stable
-apt-get clean
-rm -rf /var/lib/apt/lists/*
+sudo apt-get -y update
+sudo apt-get -y install google-chrome-stable
+sudo apt-get clean
+sudo rm -rf /var/lib/apt/lists/*
 
 python bin/grafanaSelenium.py
 python bin/nagiosSelenium.py
