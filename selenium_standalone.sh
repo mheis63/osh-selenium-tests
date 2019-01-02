@@ -33,6 +33,6 @@ sudo apt-get -y install google-chrome-stable
 sudo apt-get clean
 sudo rm -rf /var/lib/apt/lists/*
 
-#python bin/grafanaSelenium.py
+python bin/grafanaSelenium.py
 python bin/nagiosSelenium.py
 python bin/prometheusSelenium.py
