@@ -42,13 +42,10 @@ else:
 
 options = Options()
 options.add_argument('--headless')
-
 options.add_argument('--no-sandbox')
+options.add_argument('--window-size=1920x1080')
 
 browser = webdriver.Chrome('/etc/selenium/chromedriver', chrome_options=options)
-WebDriverWait(browser,15)
-browser.save_screenshot("Test.png")
-
 
 browser.get(grafana_uri)
 username = browser.find_element_by_name('username')
@@ -76,7 +73,7 @@ nodeBtn = browser.find_element_by_link_text('Nodes')
 nodeBtn.click()
 
 el = WebDriverWait(browser, 15).until(
-    EC.presence_of_element_located((By.XPATH, '/html/body/grafana-app/div[2]/div/div[1]/div/div/div[1]/dashboard-grid/div/div[1]/div/plugin-component/panel-plugin-graph/grafana-panel/div/div[2]/ng-transclude/div/div[1]/canvas[2]'))
+    EC.presence_of_element_located((By.XPATH, '/html/body/grafana-app/div[2]/div/div[1]/div/div/div[1]/dashboard-grid/div/div[1]/div/plugin-component/panel-plugin-graph/grafana-panel/div/div[2]'))
 )
 
 browser.save_screenshot('Grafana_Nodes.png')

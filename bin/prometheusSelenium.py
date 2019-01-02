@@ -8,7 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
 
 # Create logger, console handler and formatter
-logger = logging.getLogger('Grafana Selenium Tests')
+logger = logging.getLogger('Prometheus Selenium Tests')
 logger.setLevel(logging.DEBUG)
 ch = logging.StreamHandler()
 ch.setLevel(logging.DEBUG)
@@ -43,6 +43,7 @@ else:
 options = Options()
 options.add_argument('--headless')
 options.add_argument('--no-sandbox')
+options.add_argument('--window-size=1920x1080')
 
 browser = webdriver.Chrome('/etc/selenium/chromedriver', chrome_options=options)
 

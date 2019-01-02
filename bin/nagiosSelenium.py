@@ -44,6 +44,7 @@ else:
 options = Options()
 options.add_argument('--headless')
 options.add_argument('--no-sandbox')
+options.add_argument('--window-size=1920x1080')
 
 browser = webdriver.Chrome('/etc/selenium/chromedriver', chrome_options=options)
 browser.get('http://'+nagios_user+':'+nagios_password+'@'+nagios_uri)
