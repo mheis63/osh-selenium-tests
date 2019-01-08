@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 export GRAFANA_USER="admin"
 export NAGIOS_USER="nagiosadmin"

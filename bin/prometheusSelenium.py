@@ -53,4 +53,26 @@ el = WebDriverWait(browser, 15).until(
     EC.presence_of_element_located((By.NAME, 'submit'))
 )
 
-browser.save_screenshot('Prometheus_Dash.png')
+browser.save_screenshot('screenshots/Prometheus_Dash.png')
+
+statusBtn = browser.find_element_by_link_text('Status')
+statusBtn.click()
+
+browser.find_element_by_link_text('Runtime & Build Information').click()
+
+el = WebDriverWait(browser, 15).until(
+    EC.presence_of_element_located((By.XPATH, '/html/body/div/table[1]'))
+)
+
+browser.save_screenshot('screenshots/Prometheus_RuntimeInfo.png')
+
+statusBtn = browser.find_element_by_link_text('Status')
+statusBtn.click()
+
+browser.find_element_by_link_text('Command-Line Flags').click()
+
+el = WebDriverWait(browser, 15).until(
+    EC.presence_of_element_located((By.XPATH, '/html/body/div/table'))
+)
+
+browser.save_screenshot('screenshots/Prometheus_CommandLineFlags.png')

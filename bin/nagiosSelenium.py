@@ -55,16 +55,16 @@ services = browser.find_element_by_link_text('Services')
 services.click()
 
 el = WebDriverWait(browser, 15)
-browser.save_screenshot('Nagios_Services.png')
+browser.save_screenshot('screenshots/Nagios_Services.png')
 
 hostGroups = browser.find_element_by_link_text('Host Groups')
 hostGroups.click()
 
 el = WebDriverWait(browser, 15)
-browser.save_screenshot('Nagios_HostGroups.png')
+browser.save_screenshot('screenshots/Nagios_HostGroups.png')
 
 hosts = browser.find_element_by_link_text('Hosts')
 hosts.click()
 
 el = WebDriverWait(browser, 15)
-browser.save_screenshot('Nagios_Hosts.png')
+browser.save_screenshot('screenshots/Nagios_Hosts.png')

@@ -76,4 +76,20 @@ el = WebDriverWait(browser, 15).until(
     EC.presence_of_element_located((By.XPATH, '/html/body/grafana-app/div[2]/div/div[1]/div/div/div[1]/dashboard-grid/div/div[1]/div/plugin-component/panel-plugin-graph/grafana-panel/div/div[2]'))
 )
 
-browser.save_screenshot('Grafana_Nodes.png')
+browser.save_screenshot('screenshots/Grafana_Nodes.png')
+
+nodeBtn = browser.find_element_by_link_text('Nodes')
+nodeBtn.click()
+
+el = WebDriverWait(browser, 15).until(
+    EC.presence_of_element_located((By.LINK_TEXT, 'Kubernetes Cluster Status'))
+)
+
+healthBtn = browser.find_element_by_link_text('Kubernetes Cluster Status')
+healthBtn.click()
+
+el = WebDriverWait(browser, 15).until(
+    EC.presence_of_element_located((By.XPATH, '/html/body/grafana-app/div[2]/div/div[1]/div/div/div[1]/dashboard-grid/div/div[5]/div/plugin-component/panel-plugin-singlestat/grafana-panel/div'))
+)
+
+browser.save_screenshot('screenshots/Grafana_CluesterStatus.png')
