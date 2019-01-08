@@ -1,17 +1,5 @@
 #!/bin/bash
 
-export GRAFANA_USER="admin"
-export NAGIOS_USER="nagiosadmin"
-export PROMETHEUS_USER="admin"
-
-export GRAFANA_PASSWORD="password"
-export NAGIOS_PASSWORD="password"
-export PROMETHEUS_PASSWORD="changeme"
-
-export GRAFANA_URI="http://grafana.osh-infra.svc.cluster.local"
-export NAGIOS_URI="nagios.osh-infra.svc.cluster.local"
-export PROMETHEUS_URI="prometheus.osh-infra.svc.cluster.local"
-
 sudo apt-get -y update
 sudo apt-get -y install \
         python-pip \
@@ -32,7 +20,3 @@ sudo apt-get -y update
 sudo apt-get -y install google-chrome-stable
 sudo apt-get clean
 sudo rm -rf /var/lib/apt/lists/*
-
-python bin/grafanaSelenium.py
-python bin/nagiosSelenium.py
-python bin/prometheusSelenium.py
