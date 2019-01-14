@@ -26,7 +26,7 @@ else:
 
 if "KIBANA_PASSWORD" in os.environ:
   kibana_password = os.environ['KIBANA_PASSWORD']
-  logger.info('Found Kibana password')
+  logger.info('Found Kibana password')qqs
 else:
   logger.critical('Kibana password environment variable not set')
   sys.exit(1)
@@ -39,10 +39,16 @@ else:
   sys.exit(1)
 
 options = Options()
-options.add_argument('--headless')
+#options.add_argument('--headless')
 options.add_argument('--no-sandbox')
 options.add_argument('--window-size=1920x1080')
 
 browser = webdriver.Chrome('/etc/selenium/chromedriver', chrome_options=options)
 
 browser.get("http://"+kibana_user+":"+kibana_password+"@"+kibana_uri)
+
+WebDriverWait(browser, 15).until(
+    EC.presence_of_element_located((By.XPATH, '//*[@id="kibana-body"]/div/nav/div[2]'))
+)
+
+browser.save_screenshot('screenshots/Kibana_Dash.png')
